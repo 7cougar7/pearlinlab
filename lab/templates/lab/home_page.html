@@ -1,0 +1,52 @@
+{% extends 'lab/base.html' %}
+{% load static %}
+{% block header %}
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .background-div {
+            background-image: url("{% static 'images/pexels-jeffrey-czum-3330118.jpg' %}");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        p {
+            color: white;
+            margin: 0;
+            position: relative;
+            top: -12.5%;
+            left: 112.5%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="background-div">
+        <div class="jumbotron d-flex align-items-end min-vh-100 m-0" style="background-color: transparent">
+            <div class="container">
+                <div class="row">
+                    <h1 class="text-light mx-auto">Welcome to Pearlin Lab</h1>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 ml-0">
+                        <a href="{% url 'lab:adminDash' %}">
+                            <img src="{% static 'images/wood_texture.jpg' %}" class="h-25">
+                            <p>Admin</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-2 ml-auto">
+                        <a href="{% url 'lab:playerJoin' %}">
+                            <img src="{% static 'images/wood_texture.jpg' %}" class="h-25">
+                            <p>Players</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
