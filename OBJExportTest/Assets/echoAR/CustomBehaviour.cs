@@ -38,6 +38,19 @@ public class CustomBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Hologram hologram = entry.getHologram();
+        Hologram.hologramType hologramType = hologram.getType();
+        // Check for image hologram
+        if (hologramType == Hologram.hologramType.IMAGE_HOLOGRAM)
+        {
+            // Get mesh renderer
+            MeshRenderer meshRenderer = this.GetComponent<MeshRenderer>();
+            // Get material and texture
+            Material material = meshRenderer.material;
+            Texture texture = material.mainTexture;
+            // Get session and face switcher
+            GameObject session = GameObject.Find("AR Session Origin");
+            // Set material and texture
+        }
     }
 }
