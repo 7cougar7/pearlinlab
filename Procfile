@@ -1,1 +1,1 @@
-web:gunicorn pearlinlab.wsgi
+web: gunicorn pearlinlab.wsgi
