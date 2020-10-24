@@ -5,4 +5,4 @@ def home_page(request):
         'title': 'Home Page',
         'content': 'This is the homepage for the Labs Page'
     }
-    return render(request, 'admin_control/home_page.html', context)
+    return render(request, 'admin_control/base.html', context)
