@@ -1,0 +1,5 @@
+sceneSetups:
+- path: C:/Users/spide/AppData/Local/Temp/Temp1_ProceduralMapTutorialPart3.zip/TutorialPart3/Assets/Scenes/Game.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
