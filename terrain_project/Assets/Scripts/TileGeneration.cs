@@ -286,7 +286,7 @@ public class Biome
 {
 	public string name;
 	public Color color;
-	public int index;
+	public int index = 0;
 }
 
 [System.Serializable]

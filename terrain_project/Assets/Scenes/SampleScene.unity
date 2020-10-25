@@ -130,8 +130,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 655384112}
-  - component: {fileID: 655384111}
-  - component: {fileID: 655384110}
   - component: {fileID: 655384109}
   - component: {fileID: 655384108}
   - component: {fileID: 655384114}
@@ -155,75 +153,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d82f468f0e83794e86e66395aba404b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelWidthInTiles: 0
-  levelDepthInTiles: 0
+  levelWidthInTiles: 10
+  levelDepthInTiles: 10
   tilePrefab: {fileID: 3736140997329004344, guid: a072c1b1e27cd4544a31d75f0a082c5a,
     type: 3}
   centerVertexZ: 0
-  maxDistanceZ: 0
-  treeGeneration: {fileID: 0}
-  riverGeneration: {fileID: 0}
---- !u!64 &655384109
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655384107}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &655384110
-MeshRenderer:
+  maxDistanceZ: 55
+  treeGeneration: {fileID: 655384114}
+  riverGeneration: {fileID: 655384113}
+--- !u!114 &655384109
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655384107}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &655384111
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655384107}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa316a9f343c1a540af92a76f597647c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &655384112
 Transform:
   m_ObjectHideFlags: 0
@@ -232,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655384107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 187.62917, y: -215.406, z: -5.9333115}
+  m_LocalPosition: {x: 5, y: -100, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -250,9 +199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384418df6013814419a61d01f30321e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfRivers: 0
-  heightThreshold: 0
-  riverColor: {r: 0, g: 0, b: 0, a: 0}
+  numberOfRivers: 1
+  heightThreshold: 0.2
+  riverColor: {r: 0.11569952, g: 0.19419315, b: 0.9811321, a: 0}
 --- !u!114 &655384114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,11 +214,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5274e073860df4489de95a27ba1cff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noiseMapGeneration: {fileID: 0}
+  noiseMapGeneration: {fileID: 655384109}
   waves: []
-  levelScale: 0
-  neighborRadius: []
-  treePrefab: []
+  levelScale: 10
+  neighborRadius:
+  - 1
+  - 2
+  treePrefab:
+  - {fileID: 4263922822445002727, guid: 3cdafb3c2f54d434894928d72d282874, type: 3}
+  - {fileID: 8903058273634794869, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,10 +391,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.42660013, y: 0.33944437, z: -0.17670354, w: 0.8194912}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 55, y: 45, z: 0}

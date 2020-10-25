@@ -46,9 +46,10 @@ public class TreeGeneration : MonoBehaviour
 
 				// get the biome of this coordinate
 				Biome biome = tileData.chosenBiomes[tileCoordinate.coordinateZIndex, tileCoordinate.coordinateXIndex];
-
+				float maxIndexf = Mathf.Min((this.neighborRadius.Length - 1), 99999); //TODO Fix this eventually i guess
+				int maxIndex = (int)maxIndexf;
 				// check if it is a water terrain. Trees cannot be placed over the water
-				if (terrainType.name != "water")
+				if (terrainType.name != "water" && maxIndex >= 0)
 				{
 					float treeValue = treeMap[zIndex, xIndex];
 
@@ -59,10 +60,10 @@ public class TreeGeneration : MonoBehaviour
 					//Debug.Log(zIndex - this.neighborRadius[biome.index]);
 
 					// compares the current tree noise value to the neighbor ones
-					int neighborZBegin = (int)Mathf.Max(0, zIndex - this.neighborRadius[biome.index]);
-					int neighborZEnd = (int)Mathf.Min(levelDepth - 1, zIndex + this.neighborRadius[biome.index]);
-					int neighborXBegin = (int)Mathf.Max(0, xIndex - this.neighborRadius[biome.index]);
-					int neighborXEnd = (int)Mathf.Min(levelWidth - 1, xIndex + this.neighborRadius[biome.index]);
+					int neighborZBegin = (int)Mathf.Max(0, zIndex - this.neighborRadius[maxIndex]);
+					int neighborZEnd = (int)Mathf.Min(levelDepth - 1, zIndex + this.neighborRadius[maxIndex]);
+					int neighborXBegin = (int)Mathf.Max(0, xIndex - this.neighborRadius[maxIndex]);
+					int neighborXEnd = (int)Mathf.Min(levelWidth - 1, xIndex + this.neighborRadius[maxIndex]);
 					float maxValue = 0f;
 					for (int neighborZ = neighborZBegin; neighborZ <= neighborZEnd; neighborZ++)
 					{
@@ -81,7 +82,8 @@ public class TreeGeneration : MonoBehaviour
 					if (treeValue == maxValue)
 					{
 						Vector3 treePosition = new Vector3(xIndex * distanceBetweenVertices, meshVertices[vertexIndex].y, zIndex * distanceBetweenVertices);
-						GameObject tree = Instantiate(this.treePrefab[biome.index], treePosition, Quaternion.identity) as GameObject;
+						int maxTreeFab = (int)Mathf.Min(this.treePrefab.Length - 1, biome.index);
+						GameObject tree = Instantiate(this.treePrefab[maxTreeFab], treePosition, Quaternion.identity) as GameObject;
 						tree.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
 					}
 				}
